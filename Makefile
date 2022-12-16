@@ -11,6 +11,7 @@
 # **************************************************************************** #
 
 NAME = libft.a
+
 SOURCES = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 ft_memchr.c ft_memcmp.c ft_strlen.c ft_strlcpy.c ft_strlcat.c ft_strchr.c \
 ft_strrchr.c ft_strnstr.c ft_strncmp.c ft_strncmp.c ft_atoi.c \
@@ -18,6 +19,7 @@ ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 ft_toupper.c ft_tolower.c ft_calloc.c ft_strdup.c ft_substr.c \
 ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c ft_putchar_fd.c \
 ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
+
 OBJECT_FILES = ft_memset.o ft_bzero.o ft_memcpy.o ft_memccpy.o ft_memmove.o \
 ft_memchr.o ft_memcmp.o ft_strlen.o ft_strlcpy.o ft_strlcat.o ft_strchr.o \
 ft_strrchr.o ft_strnstr.o ft_strncmp.o ft_strncmp.o ft_atoi.o \
@@ -28,11 +30,13 @@ ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o
 
 all: $(NAME)
 
-$(NAME):
-	gcc -c -Wall -Wextra -Werror $(SOURCES) -I .
-	ar rc $(NAME) $(OBJECT_FILES)
+$(NAME): $(SOURCES) libft.h
+	@ echo compile libft
+	@ gcc -c -Wall -Wextra -Werror $(SOURCES) -I .
+	@ echo archive libft
+	@ ar rc $(NAME) $(OBJECT_FILES)
 
-clean: 
+clean:
 	/bin/rm -f $(OBJECT_FILES)
 
 fclean: clean
