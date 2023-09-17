@@ -74,15 +74,12 @@ char		*ft_strtrim(char const *s1, char const *set)
 	out_str_len = valid_str_len((char *)s1, (char *)set);
 	if (out_str_len > 0)
 	{
-		out_str = (char*)malloc((out_str_len + 1) * sizeof(char));
-		if (out_str)
-		{
-			s1 += idx_of_first_valid_ch((char *)s1, (char *)set);
-			ft_strlcpy(out_str, (char *)s1, out_str_len + 1);
-			return (out_str);
-		}
-		else
-			return (0);
+		out_str = (char*)ft_malloc_or_exit_error((out_str_len + 1) * sizeof(char));
+	
+		s1 += idx_of_first_valid_ch((char *)s1, (char *)set);
+		ft_strlcpy(out_str, (char *)s1, out_str_len + 1);
+		return (out_str);
+	
 	}
 	else
 	{
