@@ -58,18 +58,14 @@ char			*ft_itoa(int n)
 		sign = -1;
 	else
 		sign = 1;
-	if (num_representation != 0)
+	
+	ft_bzero(num_representation, (digits_count + 1));
+	while (digits_count--)
 	{
-		ft_bzero(num_representation, (digits_count + 1));
-		while (digits_count--)
-		{
-			num_representation[digits_count] = get_last_digit_from(n);
-			cut_last_digit_in(&n);
-		}
-		if (sign < 0)
-			num_representation[0] = '-';
-		return (num_representation);
+		num_representation[digits_count] = get_last_digit_from(n);
+		cut_last_digit_in(&n);
 	}
-	else
-		return (0);
+	if (sign < 0)
+		num_representation[0] = '-';
+	return (num_representation);
 }
