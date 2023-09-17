@@ -79,26 +79,22 @@ char			**ft_split(char const *s, char c)
 	char	**out_str;
 	int		word_index;
 
-	out_str = (char**)malloc((number_of_strs((char*)s, c) + 1) * sizeof(char*));
-	if (out_str != 0)
+	out_str = (char**)ft_malloc_or_exit_error((number_of_strs((char*)s, c) + 1) * sizeof(char*));
+
+	while (*((char*)s) && *((char*)s) == c)
+		s++;
+	word_index = 0;
+	while (*((char*)s))
 	{
-		while (*((char*)s) && *((char*)s) == c)
-			s++;
-		word_index = 0;
-		while (*((char*)s))
+		out_str[word_index] = ft_substr((char*)s, 0, word_len((char*)s, c));
+		if (out_str[word_index] == 0)
 		{
-			out_str[word_index] = ft_substr((char*)s, 0, word_len((char*)s, c));
-			if (out_str[word_index] == 0)
-			{
-				free_arr_of_strs(out_str);
-				return (0);
-			}
-			s = (char*)move_ptr_to_new_word_start((char*)s, c);
-			word_index += 1;
+			free_arr_of_strs(out_str);
+			return (0);
 		}
-		out_str[word_index] = 0;
-		return (out_str);
+		s = (char*)move_ptr_to_new_word_start((char*)s, c);
+		word_index += 1;
 	}
-	else
-		return (0);
+	out_str[word_index] = 0;
+	return (out_str);
 }
