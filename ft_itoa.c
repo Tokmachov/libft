@@ -53,7 +53,7 @@ char			*ft_itoa(int n)
 	int		sign;
 
 	digits_count = count_of_digits_in(n);
-	num_representation = (char*)malloc(sizeof(char) * (digits_count + 1));
+	num_representation = (char*)ft_malloc_or_exit_error(sizeof(char) * (digits_count + 1));
 	if (n < 0)
 		sign = -1;
 	else
