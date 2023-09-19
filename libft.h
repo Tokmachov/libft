@@ -57,5 +57,7 @@ void    *ft_malloc_or_exit_error(size_t len);
 void    ft_free_str_arr(char **str_arr);
 int     is_started_or_trailed_with_delimiter(char *str, char delimiter);
 int     has_repeated_delimeter(char *str, char delimiter);
+size_t  ptr_arr_len(char **ptr_arr);
+
 
 #endif
