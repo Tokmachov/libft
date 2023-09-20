@@ -58,6 +58,6 @@ void    ft_free_str_arr(char **str_arr);
 int     is_started_or_trailed_with_delimiter(char *str, char delimiter);
 int     has_repeated_delimeter(char *str, char delimiter);
 size_t  ptr_arr_len(char **ptr_arr);
-
+int     ft_atoi_unsigned_long_safe(char *str, unsigned long *result);
 
 #endif
