@@ -10,8 +10,11 @@
 		 a10 -> FALSE
 		 10b -> FALSE 
 */
-int ft_atoi_unsigned_long_safe(char *str, unsigned long *result)
+int ft_atoi_unsigned_long_safe(unsigned long *result, char *str)
 {
+	if (!str)
+		return FALSE;
+	
 	*result = 0;
 	
 	while (*str && *str >= '0' && *str <= '9')
